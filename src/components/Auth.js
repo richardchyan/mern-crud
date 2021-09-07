@@ -1,22 +1,25 @@
 import React, { useState } from 'react';
 import { signin, signup } from 'api';
+import { useHistory } from 'react-router-dom';
 
 const Auth = () => {
 
    const [isSignup, setIsSignup] = useState(false);
    const [formData, setFormData] = useState({firstName: '', lastName: '', email: '', password: '', confirmPassword: '' });
+   const history = useHistory();
 
 
    const handleSubmit = async (e) => {
       e.preventDefault();
-      console.log(formData);
+      
       if(isSignup){
          const response = await signup(formData)
-         console.log(response);
+         localStorage.setItem('profile', JSON.stringify(response.data));
       } else {
          const response = await signin(formData);
-         console.log(response);
+         localStorage.setItem('profile', JSON.stringify(response.data));
       }
+      history.push('/');
    }
 
    function handleChange(e){

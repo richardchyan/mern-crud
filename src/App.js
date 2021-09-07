@@ -1,5 +1,6 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom';
 import Navbar from 'components/Navbar';
 import TodosList from 'components/TodosList';
 import CreateTodos from 'components/CreateTodos';
@@ -9,6 +10,8 @@ import Auth from 'components/Auth';
 import Error from './Error';
 
 function App() {
+
+  
 
   return (
     <Router>

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import SingleTodo from './SingleTodo';
@@ -7,19 +7,20 @@ import { fetchTodos } from 'api';
 
 const TodosList = () => {
 
-   const [todos, setTodos] = useState([]);
+
+   const [todos, setTodos] = useState([]); 
+   const user = JSON.parse(localStorage.getItem('profile'));
 
    useEffect(() => {
-
-      // axios.get('http://localhost:4000/todos')
       fetchTodos()
          .then(response => {
             const data = response.data;
             setTodos(data);
+         }).catch(error => {
+            console.log(error);
          })
 
-   }, [])
-
+   }, []);
 
    return ( 
       <div className="mt-8">

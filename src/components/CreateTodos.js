@@ -3,13 +3,13 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { createTodo } from 'api/index.js';
 
-const CreateTodos = () => {
+const CreateTodos = ({ user }) => {
 
    const [title, setTitle] = useState('');
    const [description, setDescription ] = useState('');
    const [importance, setImportance] = useState('low');
    const [completed, setCompleted] = useState(false);
-   // const [todoData, setTodoData] = useState({ title: '', description: '', importance: 'low', completed: false});
+   // const [formData, setFormData] = useState({ title: '', description: '', importance: 'low', completed: false});
 
    const history = useHistory();
 
@@ -36,20 +36,13 @@ const CreateTodos = () => {
       setTitle('');
       setImportance('');
 
-      console.log('form submitted');
-      console.log(`Title: ${title}`);
-      console.log(`Description: ${description}`);
-      console.log(`Importance: ${importance}`);
-      console.log(completed);
-
       // Then set the state of a new object to the submitted values
-
       const newTodo = {
 
          title: title,
          description: description,
          importance: importance,
-         completed: completed
+         completed: completed,
       };
 
       // then use axios to post the request from the front end to the back end route where post requests are being made

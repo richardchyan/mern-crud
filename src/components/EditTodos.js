@@ -17,7 +17,6 @@ const EditTodos = () => {
 
    useEffect(() => {
 
-      // axios.get(`http://localhost:4000/todos/${id}`)
       fetchSingleTodo(id)
          .then(response => {
             
@@ -81,7 +80,7 @@ const EditTodos = () => {
    return ( 
       <div className="max-w-screen-lg m-auto p-3">
          <h1 className="text-5xl my-8 underline text-left font-semibold">Edit Your Todo</h1>
-         <form onSubmit={handleSubmit} method="POST" action="/" className="grid grid-cols-1">
+         <form onSubmit={handleSubmit} className="grid grid-cols-1">
             {/* text fields */}
             <div className="flex py-2">
                <label for="title" className="text-3xl mr-4 w-2/12 text-left ">Title:</label>

@@ -36,16 +36,20 @@ const Navbar = ({ user, setUser }) => {
       <div>
          <AppBar className={classes.appBar} position="static">
          <Link to={user ? '/' : '/signin'} className="text-6xl mb-4">Todo Tracker</Link>
-         <nav className="flex justify-center items-center space-x-10">
+         <nav >
             { user !== null  ? (
-               <>
-                  <Link className="text-xl bg-black rounded py-2 px-3" to="/">View Your List of Todos</Link>
-                  <Link className="text-xl bg-black rounded py-2 px-3" to='/create'>Create a Todo</Link>
-                  <button onClick={logout}className="text-xl bg-black rounded py-2 px-3">LOGOUT</button>
-                  { user.profile && (
-                     <span className="text-white text-xl"> You are logged in as {user.profile.name}</span>
-                  )}
-               </>
+               <div className="max-w-sm m-auto">
+                  <div className="flex flex-col m-auto justify-center mb-4">
+                     <Link className="text-md bg-black rounded-lg mb-2 py-2 px-3 w-3/4 m-auto" to="/">View Your List of Todos</Link>
+                     <Link className="text-md bg-black rounded-lg mb-2 py-2 px-3 w-3/4 m-auto" to='/create'>Create a Todo</Link>
+                     <button onClick={logout} className="text-md bg-black rounded-lg mb-2 py-2 px-3 w-3/4 m-auto">Logout</button>
+                  </div>
+                  <div>
+                     { user.profile && (
+                           <span className="text-white text-xl"> Welcome back, {user.profile.name}</span>
+                        )}
+                  </div>
+               </div>
            ) : 
                <Link className="text-xl bg-black rounded py-2 px-3" to='/signin'>Sign In</Link>
            }

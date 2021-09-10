@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
 import { AppBar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import decode from 'jwt-decode';
 
 const Navbar = ({ user, setUser }) => {
    
@@ -18,19 +19,27 @@ const Navbar = ({ user, setUser }) => {
    const location = useLocation();
    const history = useHistory();
 
-  useEffect(() => {
-     if(user !== null){
-         const token = user.token;
-     }
-     setUser(JSON.parse(localStorage.getItem('profile')));
-
-  }, [location])
-  
    function logout(){
       localStorage.clear();
       setUser(null);
       history.push('/');
    }
+
+   useEffect(() => {
+     if(user !== null){
+         const token = user.token;
+          // check if token is expired
+      if(token){
+         const decodedToken = decode(token);
+         if(decodedToken.exp * 1000 < new Date().getTime()){
+            logout();
+         }
+      }
+   }
+      
+   setUser(JSON.parse(localStorage.getItem('profile')));
+
+  }, [location])
    
    return ( 
       <div>

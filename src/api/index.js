@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:4000';
+const url = 'https://merncrud-server.herokuapp.com/';
 
 // Check if a token already exists in local storage
 

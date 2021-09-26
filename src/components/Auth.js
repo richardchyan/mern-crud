@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { signin, signup } from 'api';
 import { useHistory } from 'react-router-dom';
+import spinner from 'images/checkout-spinner.gif';
 
 const Auth = () => {
 
    const [isSignup, setIsSignup] = useState(false);
    const [formData, setFormData] = useState({firstName: '', lastName: '', email: '', password: '', confirmPassword: '' });
    const history = useHistory();
+   const [submitSpinner, setSubmitSpinner] = useState(false);
    const [showAlert, setShowAlert] = useState(false);
    const [errorMessage, setErrorMessage] = useState('');
 
@@ -16,9 +18,11 @@ const Auth = () => {
          if(isSignup){
             const response = await signup(formData);
             localStorage.setItem('profile', JSON.stringify(response.data));
+            setSubmitSpinner(true);
          } else {
             const response = await signin(formData);
             localStorage.setItem('profile', JSON.stringify(response.data));
+            setSubmitSpinner(true);
          }
          history.push('/');
       } catch (error) {
@@ -40,8 +44,16 @@ const Auth = () => {
 
    return (
       <div>
-         <h1 className="text-4xl mt-4">{isSignup ? 'Register Your Account': 'Sign in to Create and View Todos'} </h1>
-         {/* Login error alert */}
+         <h1 className="text-4xl mt-4">{isSignup ? 'Register Your Account': 'Sign in to Create, View, and Edit your Todos'} </h1>
+         {/* ======= Submit Visual Spinner ====== */}
+         <div className={submitSpinner ? "border-2 border-black rounded-md p-4 fade-in max-w-screen-sm m-auto" : "hidden"}>
+            { isSignup ? <div className="flex justify-center items-center text-xl rounded space-x-2 my-2 p-1 border-2 border-black max-w-sm w-5/12 m-auto"> <p>Signing up ...</p> <img src={spinner} alt="login spinner style={{ height: '25px', width: '25px'}}" /></div> : <div className="flex justify-center items-center text-xl rounded space-x-2 my-2 p-1 border-2 border-black max-w-sm w-5/12 m-auto"> <p>Signing in ...</p> <img src={spinner} alt="login spinner" style={{ height: '25px', width: '25px'}} /></div>}
+         </div>
+         {/* <div className="flex justify-center items-center text-xl rounded space-x-2 my-2 p-1 border-2 border-gray-100 max-w-sm w-5/12 m-auto"> 
+            <p>Signing up</p>
+            <img src={spinner} style={{ height: '25px', width: '25px'}} alt="" />
+         </div> */}
+         {/* ====== Login error alert ====== */}
          <div className={ showAlert ? "block bg-gray-100 border-2 border-gray-300 rounded-md mt-4 text-red-600 m-auto p-4 fade-in max-w-sm w-5/12" : "hidden"}>
             <span className="text-xl">{errorMessage}</span>
          </div>
@@ -76,12 +88,11 @@ const Auth = () => {
                      </div>
                   }
                   <div>
-                     <button type="submit"className="border-2 border-black rounded-md bg-blue-600 text-white p-2 mt-2"> Submit</button>
-                     <button type="button" className="text-sm p-2 mt-2 block m-auto" onClick={toggleSignin}> { !isSignup ? 'Don\'\t have an account? Click here to register' : 'Already have an account? Click to sign in' } </button>
+                     <button type="submit" className="border-2 border-black rounded-md bg-blue-600 text-white p-2 mt-2">Submit</button>
+                     <button type="button" className="text-sm p-2 mt-2 block m-auto" onClick={toggleSignin}> { !isSignup ? 'Don\'t have an account? Click here to register' : 'Already have an account? Click to sign in' } </button>
                   </div>
                </div>
             </div>
-            
          </form>
       </div>
    )

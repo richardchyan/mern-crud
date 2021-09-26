@@ -7,10 +7,6 @@ const url = 'https://merncrud-server.herokuapp.com/';
 const API = axios.create({
 
    baseURL: url,
-   // headers: {
-   //    Authorization: `Bearer ${accessToken}`
-   // }
-
 })
 
 API.interceptors.request.use(req => {

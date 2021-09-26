@@ -1,21 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Link, useLocation, useHistory } from 'react-router-dom';
-import { AppBar } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
 import decode from 'jwt-decode';
 
 const Navbar = ({ user, setUser }) => {
    
-   const useStyles = makeStyles(theme => ({
-
-      appBar: {
-         padding: '30px',
-         backgroundColor: '#5995da',
-      },
-
-   }));
-
-   const classes = useStyles();
    const location = useLocation();
    const history = useHistory();
 
@@ -42,10 +30,11 @@ const Navbar = ({ user, setUser }) => {
   }, [location])
    
    return ( 
-      <div>
-         <AppBar className={classes.appBar} position="static">
-         <Link to={user ? '/' : '/signin'} className="text-6xl mb-4">Todo Tracker</Link>
-         <nav >
+      <div className="bg-niceblue py-10 text-white">
+         <h1 className="mb-8">
+            <Link to={user ? '/' : '/signin'} className="text-5xl">Todo Tracker and List</Link>
+         </h1>
+         <nav>
             { user !== null  ? (
                <div className="max-w-sm m-auto">
                   <div className="flex flex-col m-auto justify-center mb-4">
@@ -62,9 +51,7 @@ const Navbar = ({ user, setUser }) => {
            ) : 
                <Link className="text-xl bg-black rounded py-2 px-3" to='/signin'>Sign In</Link>
            }
-            
          </nav>
-         </AppBar>
       </div>
     );
 }

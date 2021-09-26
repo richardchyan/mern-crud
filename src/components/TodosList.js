@@ -30,7 +30,7 @@ const TodosList = ({ user }) => {
    return ( 
       <div className="mt-8">
          <h1 className="text-3xl mb-10 max-w-screen-sm m-auto">{ user ? 'List of todos' : 'You are not currently signed in. Sign in to create and view your todos!'}</h1>
-         <div className={ todos.length > 0 ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-screen-lg m-auto px-4 gap-x-4" : "grid max-w-screen-lg m-auto px-4 gap-x-4" }>
+         <div className={ todos.length > 0 ? "grid grid-cols-1 md:grid-cols-2 max-w-screen-lg m-auto px-4 gap-x-4" : "grid max-w-screen-lg m-auto px-4 gap-x-4" }>
             { todos.length > 0 
                && 
                todos.map(todo => (

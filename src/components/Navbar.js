@@ -30,7 +30,7 @@ const Navbar = ({ user, setUser }) => {
   }, [location])
    
    return ( 
-      <div className="bg-green-900 py-10 text-white">
+      <div className="bg-red-800 py-10 text-white">
          <h1 className="mb-6 px-8">
             <Link to={user ? '/' : '/signin'} className="text-4xl uppercase tracking-wider">Task Manager and List</Link>
          </h1>

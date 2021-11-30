@@ -26,7 +26,6 @@ const Auth = () => {
          }
          history.push('/');
       } catch (error) {
-         // console.log(error.response.data.message);
          setShowAlert(true);
          setErrorMessage(error.response.data.message);
       }
@@ -63,27 +62,23 @@ const Auth = () => {
                <div>
                   { isSignup && 
                      <>
-                        <div className="mb-1 p-1">
-                           {/* <label for="firstName" className="text-lg tracking-wider">First name: </label> */}
+                        <div className="mb-1 p-1">                        
                            <input onChange={handleChange} value={formData.firstName} className="text-base py-2 px-3 w-full bg-gray-200 focus:bg-gray-100 border-2 border-gray-100 rounded-lg focus:ring focus:ring-blue-400 focus:outline-none" type="text" id="firstName" name="firstName" placeholder="First name" required/>
                         </div>
                         <div className="mb-1 p-1">
-                           {/* <label for="lastName" className="text-lg">Last name: </label> */}
+
                            <input onChange={handleChange} value={formData.lastName} className="text-base py-2 px-3 w-full bg-gray-200 focus:bg-gray-100 border-2 border-gray-100 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none" type="text" id="lastName" name="lastName" placeholder="Last name" required/>
                         </div>
                      </>
                    }            
                   <div className="mb-1 p-1">
-                     {/* <label for="email" className="text-lg">Email: </label> */}
                      <input onChange={handleChange} value={formData.email} className="text-base py-2 px-3 w-full bg-gray-200 focus:bg-gray-100 border-2 border-gray-100 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none" type="text" id="email" name="email" placeholder="email" required/>
                   </div>
-                  <div className="mb-1 p-1">
-                     {/* <label for="password" className="text-lg">Password: </label> */}
+                  <div className="mb-1 p-1">                     
                      <input onChange={handleChange} value={formData.password} className="text-base py-2 px-3 w-full bg-gray-200 focus:bg-gray-100 border-2 border-gray-100 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none" type="password" id="password" name="password" placeholder="password" required/>
                   </div>
                   { isSignup &&
-                     <div className="mb-1 p-1" >
-                        {/* <label for="confirmPassword" className="text-lg">Confirm Password: </label> */}
+                     <div className="mb-1 p-1" >                        
                         <input onChange={handleChange} value={formData.confirmPassword} className="text-base py-2 px-3 w-full bg-gray-200 focus:bg-gray-100 border-2 border-gray-100 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none" type="password" id="confirmPassword"  name="confirmPassword" placeholder="Confirm password" required/>
                      </div>
                   }

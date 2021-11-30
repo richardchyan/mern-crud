@@ -61,7 +61,7 @@ const CreateTodos = ({ user }) => {
 
    return ( 
       <div className="m-auto p-3">
-         <h1 className="text-5xl my-8 underline font-semibold ">Create a New Todo</h1>
+         <h1 className="text-5xl my-8 underline font-semibold ">Create a New Task</h1>
          <form onSubmit={handleSubmit} className="max-w-screen-lg m-auto py-6">
             <div className="max-w-sm m-auto rounded shadow bg-gray-50 mt-4 p-4 text-xl">
                <div className="py-2">

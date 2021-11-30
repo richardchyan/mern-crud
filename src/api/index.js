@@ -17,7 +17,6 @@ API.interceptors.request.use(req => {
    return req;
 })
 
-
 // Post URLs that uses an interceptor to attach token before any request. Use a base URL instead 
 
 export const fetchTodos = () => API.get('/todos');

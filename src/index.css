@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind base;
 
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,100;0,200;0,400;1,100&family=Poppins:wght@200;300;500&family=Work+Sans:wght@200;300;400&display=swap');
+
 .completed {
    text-decoration: line-through;
 }

@@ -30,16 +30,16 @@ const Navbar = ({ user, setUser }) => {
   }, [location])
    
    return ( 
-      <div className="bg-niceblue py-10 text-white">
-         <h1 className="mb-8">
-            <Link to={user ? '/' : '/signin'} className="text-5xl">Todo Tracker and List</Link>
+      <div className="bg-green-900 py-10 text-white">
+         <h1 className="mb-6 px-8">
+            <Link to={user ? '/' : '/signin'} className="text-4xl uppercase tracking-wider">Task Manager and List</Link>
          </h1>
          <nav>
             { user !== null  ? (
                <div className="max-w-sm m-auto">
                   <div className="flex flex-col m-auto justify-center mb-4">
-                     <Link className="text-md bg-black rounded-lg mb-2 py-2 px-3 w-3/4 m-auto" to="/">View Your List of Todos</Link>
-                     <Link className="text-md bg-black rounded-lg mb-2 py-2 px-3 w-3/4 m-auto" to='/create'>Create a Todo</Link>
+                     <Link className="text-md bg-black rounded-lg mb-2 py-2 px-3 w-3/4 m-auto" to="/">View Your List of Tasks</Link>
+                     <Link className="text-md bg-black rounded-lg mb-2 py-2 px-3 w-3/4 m-auto" to='/create'>Create a task</Link>
                      <button onClick={logout} className="text-md bg-black rounded-lg mb-2 py-2 px-3 w-3/4 m-auto">Logout</button>
                   </div>
                   <div>

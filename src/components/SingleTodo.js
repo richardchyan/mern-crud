@@ -1,6 +1,7 @@
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
-import { deleteTodo } from 'api';
+import { FiEdit } from 'react-icons/fi';
+import { AiOutlineDelete } from 'react-icons/ai'
 
 const SingleTodo = ({ todo }) => {
 
@@ -24,8 +25,8 @@ return (
                   <span>{todo.createdAt === todo.updatedAt ? moment(todo.createdAt).fromNow() : moment(todo.updatedAt).fromNow()}</span>
             </div>
             <div className="grid grid-cols-1 mt-4 space-y-6">
-                  <Link to={`/edit/${todo._id}`} className="w-1/2 m-auto p-2 text-base tracking-tight text-white bg-green-600 rounded-xl hover:shadow-lg border-2 border-gray-100">Edit Item</Link>
-                  <Link to={`/delete/${todo._id}`} className="w-1/2 m-auto p-2 text-base tracking-tight text-white bg-red-600 rounded-xl hover:shadow-lg border-2 border-gray-100">Delete Item</Link>
+                  <Link to={`/edit/${todo._id}`} className="flex justify-center space-x-2 w-1/2 m-auto p-2 text-base tracking-tight text-white bg-green-600 rounded-xl hover:shadow-lg border-2 border-gray-100"><span>Edit</span>  <FiEdit className="text-2xl" /></Link>
+                  <Link to={`/delete/${todo._id}`} className="flex justify-center space-x-2 w-1/2 m-auto p-2 text-base tracking-tight text-white bg-red-500 rounded-xl hover:shadow-lg border-2 border-gray-100"><span>Delete</span> <AiOutlineDelete className="text-2xl"/></Link>
                   
                   {/* Using a button with direct onclick to the api call requires refreshing of page without using of async actions with reducers, so it doesn't work. The link redirect to an delete component render can call the api method and then use history to push back to homepage, you can only use the history hook in a function component, not  */}
                   {/* <button onClick={() => deleteTodo(todo._id)} className="w-1/2 m-auto p-2 text-lg text-white bg-red-600 rounded border-2 border-gray-100">Delete Item</button> */}

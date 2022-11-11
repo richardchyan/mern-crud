@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://merncrud-server.herokuapp.com/';
+const url = 'https://task-app-server.onrender.com/';
 
 // Check if a token already exists in local storage
 
